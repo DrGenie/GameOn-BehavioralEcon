@@ -58,7 +58,7 @@ button {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0;
 }
 
 button:hover {
@@ -72,6 +72,24 @@ button:hover {
   padding: 0.5rem;
   border-radius: 5px;
   background: #fafafa;
+}
+
+.quiz-container {
+  margin-top: 1rem;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.feedback {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #e74c3c;
 }
 
 footer {
