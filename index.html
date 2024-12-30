@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GameOn: Behavioral Econ Explorations</title>
   <link rel="stylesheet" href="style.css"/>
+  <!-- GSAP for animations -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
 </head>
 <body>
   <header>
     <h1>GameOn: Behavioral Econ Explorations</h1>
-    <p>Dynamic Behavioral Game Theory Activities</p>
+    <p>Enjoyable, round-based Behavioral Econ Activities with real-time data.</p>
     <nav>
       <ul>
         <li><a href="#ultimatum">Ultimatum Game</a></li>
@@ -29,27 +31,42 @@
     <section id="ultimatum">
       <h2>Ultimatum Game Simulation</h2>
       <p><strong>Objective:</strong> Investigate fairness norms and rejection thresholds.</p>
-      <p>Proposers split \$10, responders accept or reject. Typical offers hover around 40% (Camerer, 2003).</p>
+      <p>Proposers split \$10; responders accept or reject. Typical offers hover around 40% (Camerer, 2003).</p>
+
+      <!-- Round Instructions -->
+      <div class="round-instructions">
+        <strong>Round 1:</strong> Start with a fairness threshold of 4.<br/>
+        <strong>Round 2:</strong> Increase the threshold to 5 (50%).<br/>
+        <em>Submit your decisions in 
+          <a href="https://forms.google.com/" target="_blank">this Google Form</a> 
+          or 
+          <a href="https://kahoot.com/" target="_blank">Kahoot poll</a> each round.</em>
+      </div>
 
       <!-- Interactive Controls for Ultimatum Game -->
       <div class="controls">
-        <label for="ultOffer">Proposer Offer:</label>
+        <label for="ultOffer">Proposer Offer (\$ out of 10):</label>
         <input type="range" id="ultOffer" name="ultOffer" min="0" max="10" value="4">
-        <span id="offerValue">4</span> / \$10
-        <button onclick="simulateUltimatum()">Simulate</button>
+        <span id="offerValue">4</span>
+        <button onclick="simulateUltimatum()">Simulate Round 1</button>
+        <button onclick="simulateUltimatumRound2()">Simulate Round 2</button>
       </div>
       <button onclick="showUltimatumDiagram()">Reset Diagram</button>
       <div id="ultimatumDiagram" class="diagram-container"></div>
 
-      <!-- Quiz -->
       <button onclick="toggleQuiz('ultimatumQuiz')">Quiz</button>
       <div id="ultimatumQuiz" class="quiz-container hidden">
         <p>What is the average offer typically seen in Ultimatum Game experiments?</p>
-        <button onclick="checkAnswer('ultimatumQuiz', '30%', 'Too low! The average is ~40%.', false)">30%</button>
-        <button onclick="checkAnswer('ultimatumQuiz', '40%', 'Correct! Researchers often find offers of around 40%.', true)">40%</button>
-        <button onclick="checkAnswer('ultimatumQuiz', '50%', 'Slightly higher than average, but sometimes seen.', false)">50%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '30%', 'Too low! Real average is ~40%.', false)">30%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '40%', 'Correct! ~40% is common.', true)">40%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '50%', 'Slightly higher than average, but sometimes observed.', false)">50%</button>
         <div class="feedback"></div>
       </div>
+
+      <p>
+        Share reflections on thresholds and fairness: 
+        <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">Discuss Ultimatum Game</a>
+      </p>
     </section>
 
     <!-- ================ -->
@@ -58,6 +75,17 @@
     <section id="trust">
       <h2>Trust Game Roleplay</h2>
       <p><strong>Objective:</strong> Observe trust and reciprocity. Amounts sent are tripled, then partially returned.</p>
+
+      <div class="round-instructions">
+        <strong>Round 1:</strong> Basic trust, no prior info.<br/>
+        <strong>Round 2:</strong> Show results from Round 1. Does it increase or decrease your trust?
+        <br/>
+        <em>Log your sending/returning amounts in 
+          <a href="https://forms.google.com/" target="_blank">Google Forms</a> 
+          or 
+          <a href="https://kahoot.com/" target="_blank">Kahoot</a>.
+        </em>
+      </div>
 
       <!-- Interactive Controls for Trust Game -->
       <div class="controls">
@@ -72,15 +100,19 @@
         <span id="trustReturnValue">0.5</span> (0 to 1 of 3X)
 
         <br/>
-        <button onclick="simulateTrust()">Simulate</button>
+        <button onclick="simulateTrust()">Simulate Round</button>
       </div>
       <button onclick="showTrustDiagram()">Reset Diagram</button>
       <div id="trustDiagram" class="diagram-container"></div>
 
-      <!-- Timer (Example) -->
       <p><strong>Timer:</strong> <span id="trustTimer">60</span> seconds left.</p>
       <button onclick="startCountdown('trustTimer', 60)">Start Timer</button>
       <button onclick="pauseCountdown()">Pause Timer</button>
+
+      <p>
+        Discuss trust levels and reciprocity:
+        <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">Trust Game Forum</a>
+      </p>
     </section>
 
     <!-- ===================== -->
@@ -88,9 +120,13 @@
     <!-- ===================== -->
     <section id="publicgoods">
       <h2>Framing Effects in Public Goods</h2>
-      <p><strong>Objective:</strong> Compare cooperation in “Community Fund” vs. “Stock Market” frames.</p>
+      <p><strong>Objective:</strong> Compare cooperation under “Community Fund” vs. “Stock Market” frames.</p>
 
-      <!-- Interactive Controls for Public Goods -->
+      <div class="round-instructions">
+        <strong>Round 1:</strong> “Community Fund” label.<br/>
+        <strong>Round 2:</strong> “Stock Market” label. Observe if contributions differ.
+      </div>
+
       <div class="controls">
         <label>P1:</label>
         <input type="range" id="pgP1" min="0" max="10" value="3">
@@ -111,10 +147,15 @@
         <span id="pgP4Value">4</span>
 
         <br/>
-        <button onclick="simulatePublicGoods()">Simulate</button>
+        <button onclick="simulatePublicGoods()">Simulate Contributions</button>
       </div>
       <button onclick="showPublicGoodsDiagram()">Reset Diagram</button>
       <div id="publicGoodsDiagram" class="diagram-container"></div>
+
+      <p>
+        Reflect on framing: 
+        <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">Public Goods Chat</a>
+      </p>
     </section>
 
     <!-- ========================= -->
@@ -124,12 +165,22 @@
       <h2>Speculative Bubbles Market Simulation</h2>
       <p><strong>Objective:</strong> Simulate bubble-like price inflation and see if/when a crash occurs.</p>
 
-      <!-- Interactive Control: "Investor Hype" -->
+      <div class="round-instructions">
+        <strong>Round 1:</strong> Low hype, stable growth.<br/>
+        <strong>Round 2:</strong> Introduce “Rumor of major brand expansion.” Hype intensifies.
+        <br/>
+        <em>Submit your trading decisions:
+          <a href="https://forms.google.com/" target="_blank">Google Forms</a>
+          or
+          <a href="https://kahoot.com/" target="_blank">Kahoot</a>.
+        </em>
+      </div>
+
       <div class="controls">
         <label for="bubbleHype">Investor Hype (0=calm, 10=extreme):</label>
         <input type="range" id="bubbleHype" min="0" max="10" value="5">
         <span id="bubbleHypeValue">5</span>
-        <button onclick="simulateSpeculative()">Simulate</button>
+        <button onclick="simulateSpeculative()">Simulate Round</button>
       </div>
       <button onclick="showSpeculativeDiagram()">Reset Diagram</button>
       <div id="speculativeDiagram" class="diagram-container"></div>
@@ -137,6 +188,11 @@
       <p><strong>Timer:</strong> <span id="speculativeTimer">90</span> seconds left.</p>
       <button onclick="startCountdown('speculativeTimer', 90)">Start Timer</button>
       <button onclick="pauseCountdown()">Pause Timer</button>
+
+      <p>
+        Post your bubble triggers or crash stories:
+        <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">Speculative Forum</a>
+      </p>
     </section>
 
     <!-- ============================== -->
@@ -146,7 +202,11 @@
       <h2>Rock-Paper-Scissors Strategy Showdown</h2>
       <p><strong>Objective:</strong> Practice level-K reasoning by predicting others’ moves.</p>
 
-      <!-- Interactive Control: Player Choice -->
+      <div class="round-instructions">
+        <strong>Round 1:</strong> Single match.  
+        <strong>Round 2:</strong> After seeing your opponent’s Round 1 move, adapt your strategy.
+      </div>
+
       <div class="controls">
         <label for="rpsChoice">Your Move:</label>
         <select id="rpsChoice">
@@ -154,10 +214,15 @@
           <option value="paper">Paper</option>
           <option value="scissors">Scissors</option>
         </select>
-        <button onclick="simulateRPS()">Play</button>
+        <button onclick="simulateRPS()">Play Round</button>
       </div>
       <button onclick="showRPSDiagram()">Reset Diagram</button>
       <div id="rpsDiagram" class="diagram-container"></div>
+
+      <p>
+        Share your strategy or level-K reasoning:
+        <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">RPS Discussions</a>
+      </p>
     </section>
 
     <!-- ======================= -->
@@ -172,7 +237,9 @@
         <li>TED Talk on the beauty contest game</li>
         <li><a href="https://kahoot.com/" target="_blank">Kahoot</a> or <a href="https://forms.google.com/" target="_blank">Google Forms</a> for data collection</li>
       </ul>
-      <p>Join the discussion on our <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">GitHub Discussions</a>.</p>
+      <p>Feel free to post broader reflections on 
+        <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">GitHub Discussions</a>.
+      </p>
     </section>
   </main>
 
@@ -180,7 +247,7 @@
     <p>© 2024 GameOn: Behavioral Econ Explorations</p>
   </footer>
 
-  <!-- Load script at the end so all DOM elements exist -->
+  <!-- JS file at end so DOM elements are in place -->
   <script src="script.js"></script>
 </body>
 </html>
