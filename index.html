@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>GameOn: Behavioral Econ Explorations</h1>
-    <p>Interactive Behavioral Game Theory Activities</p>
+    <p>Dynamic Behavioral Game Theory Activities</p>
     <nav>
       <ul>
         <li><a href="#ultimatum">Ultimatum Game</a></li>
@@ -18,114 +18,151 @@
         <li><a href="#speculative">Speculative Bubbles</a></li>
         <li><a href="#rps">Rock-Paper-Scissors</a></li>
         <li><a href="#resources">Resources</a></li>
-        <li><a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">Discussion</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <!-- Ultimatum Game -->
+    <!-- ============================= -->
+    <!-- 1) ULTIMATUM GAME SIMULATION -->
+    <!-- ============================= -->
     <section id="ultimatum">
       <h2>Ultimatum Game Simulation</h2>
       <p><strong>Objective:</strong> Investigate fairness norms and rejection thresholds.</p>
       <p>Proposers split \$10, responders accept or reject. Typical offers hover around 40% (Camerer, 2003).</p>
-      <button onclick="showUltimatumDiagram()">Start Simulation</button>
+
+      <!-- Interactive Controls for Ultimatum Game -->
+      <div class="controls">
+        <label for="ultOffer">Proposer Offer:</label>
+        <input type="range" id="ultOffer" name="ultOffer" min="0" max="10" value="4">
+        <span id="offerValue">4</span> / \$10
+        <button onclick="simulateUltimatum()">Simulate</button>
+      </div>
+      <button onclick="showUltimatumDiagram()">Reset Diagram</button>
       <div id="ultimatumDiagram" class="diagram-container"></div>
 
-      <!-- Short quiz for Ultimatum Game -->
+      <!-- Quiz -->
       <button onclick="toggleQuiz('ultimatumQuiz')">Quiz</button>
       <div id="ultimatumQuiz" class="quiz-container hidden">
         <p>What is the average offer typically seen in Ultimatum Game experiments?</p>
-        <button onclick="checkAnswer('ultimatumQuiz', '30%', 'That’s a bit low; actual average is slightly higher.', false)">30%</button>
-        <button onclick="checkAnswer('ultimatumQuiz', '40%', 'Correct! Most experiments show ~40%.', true)">40%</button>
-        <button onclick="checkAnswer('ultimatumQuiz', '50%', 'That’s fairly generous; the average is around 40%.', false)">50%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '30%', 'Too low! The average is ~40%.', false)">30%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '40%', 'Correct! Researchers often find offers of around 40%.', true)">40%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '50%', 'Slightly higher than average, but sometimes seen.', false)">50%</button>
         <div class="feedback"></div>
       </div>
     </section>
 
-    <!-- Trust Game -->
+    <!-- ================ -->
+    <!-- 2) TRUST GAME -->
+    <!-- ================ -->
     <section id="trust">
       <h2>Trust Game Roleplay</h2>
-      <p><strong>Objective:</strong> Observe trust and reciprocity. Amounts sent are tripled, then partially returned (Camerer, 2003).</p>
-      <button onclick="showTrustDiagram()">Start Simulation</button>
+      <p><strong>Objective:</strong> Observe trust and reciprocity. Amounts sent are tripled, then partially returned.</p>
+
+      <!-- Interactive Controls for Trust Game -->
+      <div class="controls">
+        <label for="trustSent">Amount Sent (X):</label>
+        <input type="range" id="trustSent" min="0" max="10" value="5">
+        <span id="trustSentValue">5</span> / \$10
+
+        <br/>
+
+        <label for="trustReturn">Receiver Return Fraction:</label>
+        <input type="range" id="trustReturn" step="0.1" min="0" max="1" value="0.5">
+        <span id="trustReturnValue">0.5</span> (0 to 1 of 3X)
+
+        <br/>
+        <button onclick="simulateTrust()">Simulate</button>
+      </div>
+      <button onclick="showTrustDiagram()">Reset Diagram</button>
       <div id="trustDiagram" class="diagram-container"></div>
 
-      <!-- Countdown Timer for Trust Game -->
+      <!-- Timer (Example) -->
       <p><strong>Timer:</strong> <span id="trustTimer">60</span> seconds left.</p>
       <button onclick="startCountdown('trustTimer', 60)">Start Timer</button>
       <button onclick="pauseCountdown()">Pause Timer</button>
-
-      <!-- Short quiz for Trust Game -->
-      <button onclick="toggleQuiz('trustQuiz')">Quiz</button>
-      <div id="trustQuiz" class="quiz-container hidden">
-        <p>How is the money sent by the Sender modified before reaching the Receiver?</p>
-        <button onclick="checkAnswer('trustQuiz', 'Doubled', 'Nope, it’s not just doubled.', false)">Doubled</button>
-        <button onclick="checkAnswer('trustQuiz', 'Tripled', 'Correct! It becomes 3X.', true)">Tripled</button>
-        <button onclick="checkAnswer('trustQuiz', 'No change', 'Incorrect; there is a big multiplier.', false)">No change</button>
-        <div class="feedback"></div>
-      </div>
     </section>
 
-    <!-- Public Goods -->
+    <!-- ===================== -->
+    <!-- 3) PUBLIC GOODS GAME -->
+    <!-- ===================== -->
     <section id="publicgoods">
       <h2>Framing Effects in Public Goods</h2>
-      <p><strong>Objective:</strong> Compare cooperation in “Community Fund” vs. “Stock Market” frames (Angner, 2016).</p>
-      <button onclick="showPublicGoodsDiagram()">Start Simulation</button>
-      <div id="publicGoodsDiagram" class="diagram-container"></div>
+      <p><strong>Objective:</strong> Compare cooperation in “Community Fund” vs. “Stock Market” frames.</p>
 
-      <!-- Short quiz for Public Goods -->
-      <button onclick="toggleQuiz('publicGoodsQuiz')">Quiz</button>
-      <div id="publicGoodsQuiz" class="quiz-container hidden">
-        <p>Which factor often has a major impact on public goods contributions?</p>
-        <button onclick="checkAnswer('publicGoodsQuiz', 'Punishment', 'Punishment can help, but not the biggest factor here.', false)">Punishment</button>
-        <button onclick="checkAnswer('publicGoodsQuiz', 'Framing', 'Correct! “Community” vs “Stock Market” triggers different norms.', true)">Framing</button>
-        <button onclick="checkAnswer('publicGoodsQuiz', 'Market size', 'Not the main factor we focus on here.', false)">Market size</button>
-        <div class="feedback"></div>
+      <!-- Interactive Controls for Public Goods -->
+      <div class="controls">
+        <label>P1:</label>
+        <input type="range" id="pgP1" min="0" max="10" value="3">
+        <span id="pgP1Value">3</span>
+
+        <label>P2:</label>
+        <input type="range" id="pgP2" min="0" max="10" value="5">
+        <span id="pgP2Value">5</span>
+
+        <br/>
+
+        <label>P3:</label>
+        <input type="range" id="pgP3" min="0" max="10" value="2">
+        <span id="pgP3Value">2</span>
+
+        <label>P4:</label>
+        <input type="range" id="pgP4" min="0" max="10" value="4">
+        <span id="pgP4Value">4</span>
+
+        <br/>
+        <button onclick="simulatePublicGoods()">Simulate</button>
       </div>
+      <button onclick="showPublicGoodsDiagram()">Reset Diagram</button>
+      <div id="publicGoodsDiagram" class="diagram-container"></div>
     </section>
 
-    <!-- Speculative Bubbles -->
+    <!-- ========================= -->
+    <!-- 4) SPECULATIVE BUBBLES -->
+    <!-- ========================= -->
     <section id="speculative">
       <h2>Speculative Bubbles Market Simulation</h2>
-      <p><strong>Objective:</strong> Simulate bubble-like price inflation and see if/when a crash occurs (Kahneman & Tversky, 1979).</p>
-      <button onclick="showSpeculativeDiagram()">Start Simulation</button>
+      <p><strong>Objective:</strong> Simulate bubble-like price inflation and see if/when a crash occurs.</p>
+
+      <!-- Interactive Control: "Investor Hype" -->
+      <div class="controls">
+        <label for="bubbleHype">Investor Hype (0=calm, 10=extreme):</label>
+        <input type="range" id="bubbleHype" min="0" max="10" value="5">
+        <span id="bubbleHypeValue">5</span>
+        <button onclick="simulateSpeculative()">Simulate</button>
+      </div>
+      <button onclick="showSpeculativeDiagram()">Reset Diagram</button>
       <div id="speculativeDiagram" class="diagram-container"></div>
 
-      <!-- Countdown Timer for Bubbles -->
       <p><strong>Timer:</strong> <span id="speculativeTimer">90</span> seconds left.</p>
       <button onclick="startCountdown('speculativeTimer', 90)">Start Timer</button>
       <button onclick="pauseCountdown()">Pause Timer</button>
-
-      <!-- Short quiz for Speculative Bubbles -->
-      <button onclick="toggleQuiz('speculativeQuiz')">Quiz</button>
-      <div id="speculativeQuiz" class="quiz-container hidden">
-        <p>Which historical episode is often cited as a classic speculative bubble?</p>
-        <button onclick="checkAnswer('speculativeQuiz', 'Tulip mania', 'Correct! 17th-century Netherlands.', true)">Tulip mania</button>
-        <button onclick="checkAnswer('speculativeQuiz', 'Industrial revolution', 'That’s an economic shift, not a bubble.', false)">Industrial revolution</button>
-        <button onclick="checkAnswer('speculativeQuiz', 'Spice trade', 'Important historically, but not the usual bubble example.', false)">Spice trade</button>
-        <div class="feedback"></div>
-      </div>
     </section>
 
-    <!-- Rock-Paper-Scissors -->
+    <!-- ============================== -->
+    <!-- 5) ROCK-PAPER-SCISSORS GAME -->
+    <!-- ============================== -->
     <section id="rps">
       <h2>Rock-Paper-Scissors Strategy Showdown</h2>
-      <p><strong>Objective:</strong> Practice level-K reasoning by predicting others’ next move (Camerer, 2003).</p>
-      <button onclick="showRPSDiagram()">Start Simulation</button>
-      <div id="rpsDiagram" class="diagram-container"></div>
+      <p><strong>Objective:</strong> Practice level-K reasoning by predicting others’ moves.</p>
 
-      <!-- Short quiz for RPS -->
-      <button onclick="toggleQuiz('rpsQuiz')">Quiz</button>
-      <div id="rpsQuiz" class="quiz-container hidden">
-        <p>Which concept involves iterative thinking about others’ possible strategies?</p>
-        <button onclick="checkAnswer('rpsQuiz', 'Level-K reasoning', 'Correct!', true)">Level-K reasoning</button>
-        <button onclick="checkAnswer('rpsQuiz', 'Bayesian updating', 'That’s about updating beliefs with data.', false)">Bayesian updating</button>
-        <button onclick="checkAnswer('rpsQuiz', 'Backward induction', 'That’s for finite sequential games, not quite the same.', false)">Backward induction</button>
-        <div class="feedback"></div>
+      <!-- Interactive Control: Player Choice -->
+      <div class="controls">
+        <label for="rpsChoice">Your Move:</label>
+        <select id="rpsChoice">
+          <option value="rock">Rock</option>
+          <option value="paper">Paper</option>
+          <option value="scissors">Scissors</option>
+        </select>
+        <button onclick="simulateRPS()">Play</button>
       </div>
+      <button onclick="showRPSDiagram()">Reset Diagram</button>
+      <div id="rpsDiagram" class="diagram-container"></div>
     </section>
 
-    <!-- Additional Resources -->
+    <!-- ======================= -->
+    <!-- ADDITIONAL RESOURCES -->
+    <!-- ======================= -->
     <section id="resources">
       <h2>Additional Resources</h2>
       <ul>
@@ -133,16 +170,9 @@
         <li>Camerer’s <em>Behavioral Game Theory</em></li>
         <li>Kahneman & Tversky’s <em>Prospect Theory</em></li>
         <li>TED Talk on the beauty contest game</li>
-        <li>
-          <a href="https://kahoot.com/" target="_blank">Kahoot</a> or
-          <a href="https://forms.google.com/" target="_blank">Google Forms</a> for data collection
-        </li>
+        <li><a href="https://kahoot.com/" target="_blank">Kahoot</a> or <a href="https://forms.google.com/" target="_blank">Google Forms</a> for data collection</li>
       </ul>
-      <p>
-        Check our 
-        <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">Discussion Forums</a>
-        to share your Reflection Reports, discuss “news” twists, or ask questions.
-      </p>
+      <p>Join the discussion on our <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">GitHub Discussions</a>.</p>
     </section>
   </main>
 
@@ -150,7 +180,7 @@
     <p>© 2024 GameOn: Behavioral Econ Explorations</p>
   </footer>
 
-  <!-- IMPORTANT: Load script after HTML so onclick calls work. -->
+  <!-- Load script at the end so all DOM elements exist -->
   <script src="script.js"></script>
 </body>
 </html>
