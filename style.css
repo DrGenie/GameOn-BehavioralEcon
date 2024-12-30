@@ -51,6 +51,10 @@ section h2 {
   color: #2c3e50;
 }
 
+.controls {
+  margin-bottom: 1rem;
+}
+
 button {
   background: #2980b9;
   color: #fff;
@@ -74,6 +78,27 @@ button:hover {
   background: #fafafa;
 }
 
+/* For highlighting Ultimatum arrows */
+svg .rejectArrow {
+  stroke: black;
+  stroke-width: 2;
+}
+svg .acceptArrow {
+  stroke: black;
+  stroke-width: 2;
+}
+svg .highlightReject {
+  stroke: #c0392b !important; /* red */
+  stroke-width: 4 !important;
+}
+svg .highlightAccept {
+  stroke: #27ae60 !important; /* green */
+  stroke-width: 4 !important;
+}
+
+/* For dynamic modifications in other games, we can define classes similarly. */
+
+/* QUIZ */
 .quiz-container {
   margin-top: 1rem;
   background: #f9f9f9;
