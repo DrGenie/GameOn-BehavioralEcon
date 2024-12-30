@@ -1,8 +1,12 @@
-// Ultimatum Game Diagram
+/************************************************************************
+ * 1. DIAGRAMS (SVG Generation)
+ ************************************************************************/
+
+// 1. Ultimatum Game Diagram
 function showUltimatumDiagram() {
   const container = document.getElementById('ultimatumDiagram');
   container.innerHTML = `
-    <svg width="500" height="300">
+    <svg width="500" height="200">
       <!-- Proposer Node -->
       <rect x="20" y="20" width="100" height="40" fill="lightblue" rx="10" ry="10"></rect>
       <text x="70" y="45" text-anchor="middle" fill="#000">Proposer</text>
@@ -23,137 +27,207 @@ function showUltimatumDiagram() {
       <text x="360" y="63" fill="#000">Accept</text>
 
       <!-- Payoff text -->
-      <text x="410" y="10" fill="red" font-size="12">Payoffs = 0,0</text>
-      <text x="410" y="70" fill="blue" font-size="12">Payoffs = X, (10 - X)</text>
+      <text x="410" y="10" fill="red" font-size="12">Payoff = 0, 0</text>
+      <text x="410" y="70" fill="blue" font-size="12">Payoff = X, (10 - X)</text>
     </svg>
   `;
 }
 
-// Trust Game Diagram
+// 2. Trust Game Diagram
 function showTrustDiagram() {
   const container = document.getElementById('trustDiagram');
   container.innerHTML = `
-    <svg width="500" height="300">
-      <!-- Sender Node -->
-      <rect x="20" y="120" width="80" height="40" fill="lightblue" rx="10" ry="10"></rect>
-      <text x="60" y="145" text-anchor="middle" fill="#000">Sender</text>
+    <svg width="500" height="200">
+      <!-- Sender -->
+      <rect x="20" y="80" width="80" height="40" fill="lightblue" rx="10" ry="10"></rect>
+      <text x="60" y="105" text-anchor="middle" fill="#000">Sender</text>
 
-      <!-- Arrow to Tripled Node -->
-      <line x1="100" y1="140" x2="200" y2="140" stroke="black" stroke-width="2"></line>
-      <text x="150" y="130" fill="#000">Sends X</text>
+      <!-- Arrow to tripled node -->
+      <line x1="100" y1="100" x2="200" y2="100" stroke="black" stroke-width="2"></line>
+      <text x="150" y="90" fill="#000">Sends X</text>
 
-      <!-- Tripled Node -->
-      <rect x="200" y="120" width="100" height="40" fill="lightgreen" rx="10" ry="10"></rect>
-      <text x="250" y="145" text-anchor="middle" fill="#000">Tripled: 3X</text>
+      <!-- Tripled node -->
+      <rect x="200" y="80" width="100" height="40" fill="lightgreen" rx="10" ry="10"></rect>
+      <text x="250" y="105" text-anchor="middle" fill="#000">Tripled: 3X</text>
 
       <!-- Arrow to Receiver -->
-      <line x1="300" y1="140" x2="380" y2="140" stroke="black" stroke-width="2"></line>
-      <text x="340" y="130" fill="#000">Transfer</text>
+      <line x1="300" y1="100" x2="400" y2="100" stroke="black" stroke-width="2"></line>
+      <text x="350" y="90" fill="#000">Transfer</text>
 
-      <!-- Receiver Node -->
-      <rect x="380" y="120" width="80" height="40" fill="lightcoral" rx="10" ry="10"></rect>
-      <text x="420" y="145" text-anchor="middle" fill="#000">Receiver</text>
+      <!-- Receiver -->
+      <rect x="400" y="80" width="80" height="40" fill="lightpink" rx="10" ry="10"></rect>
+      <text x="440" y="105" text-anchor="middle" fill="#000">Receiver</text>
 
-      <!-- Return Arrow -->
-      <line x1="420" y1="160" x2="280" y2="220" stroke="black" stroke-width="2"></line>
-      <text x="360" y="195" fill="#000">Returns Y</text>
-
-      <!-- Sender final payoff -->
-      <text x="150" y="240" fill="blue">Sender = (Initial - X) + Y</text>
-      <!-- Receiver final payoff -->
-      <text x="320" y="240" fill="blue">Receiver = (3X - Y)</text>
+      <!-- Payoff notes -->
+      <text x="120" y="150" fill="#000">Sender payoff = (Initial - X) + Y</text>
+      <text x="300" y="150" fill="#000">Receiver payoff = 3X - Y</text>
     </svg>
   `;
 }
 
-// Public Goods Diagram
+// 3. Public Goods Diagram
 function showPublicGoodsDiagram() {
   const container = document.getElementById('publicGoodsDiagram');
   container.innerHTML = `
     <svg width="500" height="300">
-      <!-- Center Circle (Public Pot) -->
+      <!-- Public Pot -->
       <circle cx="250" cy="150" r="30" fill="gold"></circle>
       <text x="250" y="155" text-anchor="middle" fill="#000">Public Pot</text>
 
-      <!-- Player nodes -->
-      <rect x="100" y="40" width="60" height="30" fill="lightblue" rx="10" ry="10"></rect>
-      <text x="130" y="60" text-anchor="middle" fill="#000">P1</text>
+      <!-- P1 -->
+      <rect x="80" y="40" width="60" height="30" fill="lightblue" rx="10" ry="10"></rect>
+      <text x="110" y="60" text-anchor="middle" fill="#000">P1</text>
 
-      <rect x="340" y="40" width="60" height="30" fill="lightblue" rx="10" ry="10"></rect>
-      <text x="370" y="60" text-anchor="middle" fill="#000">P2</text>
+      <!-- P2 -->
+      <rect x="360" y="40" width="60" height="30" fill="lightblue" rx="10" ry="10"></rect>
+      <text x="390" y="60" text-anchor="middle" fill="#000">P2</text>
 
-      <rect x="100" y="230" width="60" height="30" fill="lightblue" rx="10" ry="10"></rect>
-      <text x="130" y="250" text-anchor="middle" fill="#000">P3</text>
+      <!-- P3 -->
+      <rect x="80" y="230" width="60" height="30" fill="lightblue" rx="10" ry="10"></rect>
+      <text x="110" y="250" text-anchor="middle" fill="#000">P3</text>
 
-      <rect x="340" y="230" width="60" height="30" fill="lightblue" rx="10" ry="10"></rect>
-      <text x="370" y="250" text-anchor="middle" fill="#000">P4</text>
+      <!-- P4 -->
+      <rect x="360" y="230" width="60" height="30" fill="lightblue" rx="10" ry="10"></rect>
+      <text x="390" y="250" text-anchor="middle" fill="#000">P4</text>
 
       <!-- Arrows to Pot -->
-      <line x1="160" y1="55" x2="220" y2="100" stroke="black" stroke-width="2"></line>
-      <line x1="340" y1="55" x2="280" y2="100" stroke="black" stroke-width="2"></line>
-      <line x1="160" y1="245" x2="220" y2="200" stroke="black" stroke-width="2"></line>
-      <line x1="340" y1="245" x2="280" y2="200" stroke="black" stroke-width="2"></line>
+      <line x1="140" y1="55" x2="220" y2="120" stroke="black" stroke-width="2"></line>
+      <line x1="390" y1="55" x2="280" y2="120" stroke="black" stroke-width="2"></line>
+      <line x1="140" y1="245" x2="220" y2="180" stroke="black" stroke-width="2"></line>
+      <line x1="390" y1="245" x2="280" y2="180" stroke="black" stroke-width="2"></line>
 
-      <!-- Payoff Note -->
-      <text x="250" y="180" text-anchor="middle" fill="#000" font-size="14">
-        Payoff = (Total in Pot) / (# of players)
+      <text x="250" y="190" text-anchor="middle" fill="#000" font-size="14">
+        Payoff = (Total in Pot) / (#Players)
       </text>
     </svg>
   `;
 }
 
-// Speculative Bubbles Diagram
+// 4. Speculative Bubbles Diagram
 function showSpeculativeDiagram() {
   const container = document.getElementById('speculativeDiagram');
   container.innerHTML = `
-    <svg width="500" height="300">
+    <svg width="500" height="250">
       <!-- Axes -->
-      <line x1="50" y1="250" x2="450" y2="250" stroke="black" stroke-width="2"></line>
-      <line x1="50" y1="250" x2="50" y2="50" stroke="black" stroke-width="2"></line>
+      <line x1="50" y1="200" x2="450" y2="200" stroke="black" stroke-width="2"></line>
+      <line x1="50" y1="200" x2="50" y2="50" stroke="black" stroke-width="2"></line>
 
       <!-- X-axis label -->
-      <text x="450" y="270" fill="#000">Round</text>
+      <text x="440" y="215" fill="#000">Round</text>
       <!-- Y-axis label -->
-      <text x="30" y="55" fill="#000" transform="rotate(-90, 30, 55)">Price</text>
+      <text x="40" y="60" fill="#000" transform="rotate(-90, 40, 60)">Price</text>
 
-      <!-- Example bubble line (simple wave) -->
+      <!-- Bubble line (simple wave) -->
       <polyline fill="none" stroke="blue" stroke-width="2"
-        points="50,220 100,200 150,160 200,100 250,80 300,110 350,160 400,200 450,220" />
+        points="50,180 100,150 150,120 200,80 250,60 300,90 350,130 400,170 450,190" />
 
-      <!-- Label -->
-      <text x="70" y="210" fill="blue">Early Rounds</text>
-      <text x="310" y="120" fill="blue">Bubble Peak</text>
-      <text x="390" y="190" fill="blue">Crash</text>
+      <!-- Labels -->
+      <text x="60" y="170" fill="blue">Early Rounds</text>
+      <text x="240" y="70" fill="blue">Peak</text>
+      <text x="410" y="180" fill="blue">Crash</text>
     </svg>
   `;
 }
 
-// Rock-Paper-Scissors Diagram
+// 5. Rock-Paper-Scissors Diagram
 function showRPSDiagram() {
   const container = document.getElementById('rpsDiagram');
   container.innerHTML = `
-    <svg width="500" height="300">
+    <svg width="500" height="250">
       <!-- Rock Node -->
-      <rect x="220" y="20" width="60" height="30" fill="lightgray" rx="10" ry="10"></rect>
-      <text x="250" y="40" text-anchor="middle" fill="#000">Rock</text>
+      <rect x="210" y="30" width="80" height="30" fill="lightgray" rx="10" ry="10"></rect>
+      <text x="250" y="50" text-anchor="middle" fill="#000">Rock</text>
 
       <!-- Paper Node -->
-      <rect x="80" y="180" width="60" height="30" fill="lightgreen" rx="10" ry="10"></rect>
-      <text x="110" y="200" text-anchor="middle" fill="#000">Paper</text>
+      <rect x="60" y="180" width="80" height="30" fill="lightgreen" rx="10" ry="10"></rect>
+      <text x="100" y="200" text-anchor="middle" fill="#000">Paper</text>
 
       <!-- Scissors Node -->
-      <rect x="360" y="180" width="60" height="30" fill="lightpink" rx="10" ry="10"></rect>
-      <text x="390" y="200" text-anchor="middle" fill="#000">Scissors</text>
+      <rect x="360" y="180" width="80" height="30" fill="lightpink" rx="10" ry="10"></rect>
+      <text x="400" y="200" text-anchor="middle" fill="#000">Scissors</text>
 
-      <!-- Arrows -->
-      <line x1="250" y1="50" x2="110" y2="180" stroke="black" stroke-width="2"></line>
-      <text x="140" y="110" fill="#000" font-size="12" transform="rotate(-45,140,110)">Covers</text>
+      <!-- Lines -->
+      <line x1="250" y1="60" x2="100" y2="180" stroke="black" stroke-width="2"></line>
+      <text x="170" y="120" fill="#000" font-size="12" transform="rotate(-45,170,120)">Covers</text>
 
-      <line x1="110" y1="180" x2="390" y2="180" stroke="black" stroke-width="2"></line>
-      <text x="250" y="170" fill="#000">Cut</text>
+      <line x1="100" y1="180" x2="400" y2="180" stroke="black" stroke-width="2"></line>
+      <text x="250" y="170" fill="#000">Cuts</text>
 
-      <line x1="390" y1="180" x2="250" y2="50" stroke="black" stroke-width="2"></line>
-      <text x="320" y="115" fill="#000" font-size="12" transform="rotate(45,320,115)">Crushes</text>
+      <line x1="400" y1="180" x2="250" y2="60" stroke="black" stroke-width="2"></line>
+      <text x="330" y="110" fill="#000" font-size="12" transform="rotate(45,330,110)">Crushes</text>
     </svg>
   `;
 }
+
+
+/************************************************************************
+ * 2. QUIZ LOGIC
+ ************************************************************************/
+
+function toggleQuiz(quizId) {
+  const quiz = document.getElementById(quizId);
+  quiz.classList.toggle('hidden');
+  // Clear any existing feedback
+  const feedback = quiz.querySelector('.feedback');
+  if(feedback) feedback.textContent = '';
+}
+
+function checkAnswer(quizId, option, correctOption, message) {
+  const quiz = document.getElementById(quizId);
+  const feedback = quiz.querySelector('.feedback');
+  if (option === 'a' || option === 'b' || option === 'c') {
+    // If the user picked the correct answer
+    if (document.querySelector(`[onclick*="${quizId}"][onclick*="'${option}'"]`).textContent.includes(correctOption)) {
+      feedback.style.color = '#27ae60'; // green
+    } else {
+      feedback.style.color = '#e74c3c'; // red
+    }
+    feedback.textContent = message;
+  }
+}
+
+
+/************************************************************************
+ * 3. COUNTDOWN TIMER LOGIC (for Trust Game & Speculative Bubbles)
+ ************************************************************************/
+
+let countdownInterval;
+let currentTime;
+
+function startCountdown(timerId, seconds) {
+  currentTime = seconds;
+  const timerDisplay = document.getElementById(timerId);
+  timerDisplay.textContent = currentTime;
+
+  clearInterval(countdownInterval);
+  countdownInterval = setInterval(() => {
+    currentTime--;
+    timerDisplay.textContent = currentTime;
+    if (currentTime <= 0) {
+      clearInterval(countdownInterval);
+      timerDisplay.textContent = "Time's up!";
+    }
+  }, 1000);
+}
+
+function pauseCountdown() {
+  clearInterval(countdownInterval);
+}
+
+
+/************************************************************************
+ * 4. IDEAS FOR REAL-TIME DATA COLLECTION & REFLECTION
+ ************************************************************************/
+/*
+ - Use a Google Form or Kahoot to gather each round’s offers or moves. 
+ - Display aggregated results with a quick chart or reading them back in class.
+ - Direct students to GitHub Discussions to post reactions:
+     "What cultural norms shaped your Ultimatum Game decisions?"
+     "Did you trust more or less after seeing returns in previous rounds?"
+ - Insert 'creative twist' for Speculative Bubbles, e.g.:
+     "Breaking News: The watch brand you’re trading is under investigation!"
+     See if prices instantly drop.
+ - Encourage Reflection Reports: 
+     "Which biases (anchoring, fairness, reciprocity, herd behavior) influenced your decisions?"
+     "Are you more rational after witnessing the bubble burst?"
+*/
