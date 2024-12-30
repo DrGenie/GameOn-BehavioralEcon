@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameOn: Behavioral Econ Explorations</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>GameOn: Behavioral Econ Explorations</h1>
+    <p>Interactive Behavioral Game Theory activities.</p>
+    <nav>
+      <ul>
+        <li><a href="#ultimatum">Ultimatum Game</a></li>
+        <li><a href="#trust">Trust Game</a></li>
+        <li><a href="#publicgoods">Public Goods</a></li>
+        <li><a href="#speculative">Speculative Bubbles</a></li>
+        <li><a href="#rps">Rock-Paper-Scissors</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="https://github.com/yourrepo/GameOn-BehavioralEcon/discussions" target="_blank">Discussion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Ultimatum Game -->
+    <section id="ultimatum">
+      <h2>Ultimatum Game Simulation</h2>
+      <p><strong>Objective:</strong> Investigate fairness norms and rejection thresholds.</p>
+      <p>Pair up as proposers and responders to split \$10. Rejections often occur if offers are too low (Camerer, 2003).</p>
+      <button onclick="showUltimatumDiagram()">Start Simulation</button>
+      <div id="ultimatumDiagram" class="diagram-container"></div>
+    </section>
+
+    <!-- Trust Game -->
+    <section id="trust">
+      <h2>Trust Game Roleplay</h2>
+      <p><strong>Objective:</strong> Observe reciprocity. Amounts sent get tripled, then partially returned (Camerer, 2003).</p>
+      <button onclick="showTrustDiagram()">Start Simulation</button>
+      <div id="trustDiagram" class="diagram-container"></div>
+    </section>
+
+    <!-- Public Goods -->
+    <section id="publicgoods">
+      <h2>Framing Effects in Public Goods</h2>
+      <p><strong>Objective:</strong> Compare cooperation between “Community Fund” vs. “Stock Market” frames (Angner, 2016).</p>
+      <button onclick="showPublicGoodsDiagram()">Start Simulation</button>
+      <div id="publicGoodsDiagram" class="diagram-container"></div>
+    </section>
+
+    <!-- Speculative Bubbles -->
+    <section id="speculative">
+      <h2>Speculative Bubbles Market Simulation</h2>
+      <p><strong>Objective:</strong> Recreate rapid price inflation and crash, reflecting a bubble cycle (Kahneman & Tversky, 1979).</p>
+      <button onclick="showSpeculativeDiagram()">Start Simulation</button>
+      <div id="speculativeDiagram" class="diagram-container"></div>
+    </section>
+
+    <!-- Rock-Paper-Scissors -->
+    <section id="rps">
+      <h2>Rock-Paper-Scissors Strategy Showdown</h2>
+      <p><strong>Objective:</strong> Practice level-K reasoning by anticipating others’ moves (Camerer, 2003).</p>
+      <button onclick="showRPSDiagram()">Start Simulation</button>
+      <div id="rpsDiagram" class="diagram-container"></div>
+    </section>
+
+    <!-- Additional Resources -->
+    <section id="resources">
+      <h2>Additional Resources</h2>
+      <ul>
+        <li>Erik Angner’s <em>A Course in Behavioral Economics</em></li>
+        <li>Camerer’s <em>Behavioral Game Theory</em></li>
+        <li>Kahneman & Tversky’s <em>Prospect Theory</em></li>
+        <li>TED Talk on the beauty contest game</li>
+        <li>Kahoot or Google Forms for data collection</li>
+      </ul>
+      <p>Check <a href="https://github.com/yourrepo/GameOn-BehavioralEcon/discussions" target="_blank">Discussions</a> for reflections or Q&A.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 GameOn: Behavioral Econ Explorations</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
