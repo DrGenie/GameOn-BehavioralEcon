@@ -1,17 +1,17 @@
+/* Body & Layout */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", Tahoma, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f4f4f4;
+  background: #f0f4f7;
   color: #333;
 }
 
 header {
-  background: #2c3e50;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
   color: #fff;
   padding: 1rem;
 }
-
 header h1 {
   margin: 0;
   font-size: 2rem;
@@ -22,16 +22,18 @@ nav ul {
   padding: 0;
   margin-top: 0.5rem;
 }
-
 nav ul li {
   display: inline-block;
   margin-right: 1rem;
 }
-
 nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.2s ease;
+}
+nav ul li a:hover {
+  color: #ecf0f1;
 }
 
 main {
@@ -42,8 +44,8 @@ section {
   background: #fff;
   padding: 1rem;
   margin-bottom: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 7px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 section h2 {
@@ -51,52 +53,54 @@ section h2 {
   color: #2c3e50;
 }
 
+.round-instructions {
+  background: #fafafa;
+  border-left: 4px solid #2980b9;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
 .controls {
   margin-bottom: 1rem;
 }
 
+/* Buttons */
 button {
   background: #2980b9;
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   cursor: pointer;
   border-radius: 5px;
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
+  transition: background 0.3s ease, transform 0.15s ease;
 }
-
 button:hover {
   background: #3498db;
+  transform: scale(1.03);
 }
 
+/* Diagram Container */
 .diagram-container {
   margin-top: 1rem;
-  border: 1px solid #ccc;
-  min-height: 200px;
-  padding: 0.5rem;
+  border: 2px dashed #ccc;
+  min-height: 220px;
+  padding: 1rem;
   border-radius: 5px;
-  background: #fafafa;
+  background: #fdfdfd;
+  position: relative;
 }
 
-/* For highlighting Ultimatum arrows */
-svg .rejectArrow {
-  stroke: black;
-  stroke-width: 2;
+/* Sliders */
+input[type="range"] {
+  vertical-align: middle;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
 }
-svg .acceptArrow {
-  stroke: black;
-  stroke-width: 2;
+input[type="range"]:hover {
+  box-shadow: 0 0 8px rgba(52,152,219,0.6);
 }
-svg .highlightReject {
-  stroke: #c0392b !important; /* red */
-  stroke-width: 4 !important;
-}
-svg .highlightAccept {
-  stroke: #27ae60 !important; /* green */
-  stroke-width: 4 !important;
-}
-
-/* For dynamic modifications in other games, we can define classes similarly. */
 
 /* QUIZ */
 .quiz-container {
@@ -110,13 +114,28 @@ svg .highlightAccept {
 .hidden {
   display: none;
 }
-
 .feedback {
   margin-top: 0.5rem;
   font-style: italic;
   color: #e74c3c;
 }
 
+/* Ultimatum Arrows */
+svg .rejectArrow, svg .acceptArrow {
+  stroke: #7f8c8d;
+  stroke-width: 2;
+  transition: stroke-width 0.3s ease;
+}
+svg .highlightReject {
+  stroke: #c0392b !important;
+  stroke-width: 5 !important;
+}
+svg .highlightAccept {
+  stroke: #27ae60 !important;
+  stroke-width: 5 !important;
+}
+
+/* Footer */
 footer {
   background: #2c3e50;
   color: #fff;
