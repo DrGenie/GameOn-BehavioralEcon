@@ -36,9 +36,9 @@
       <button onclick="toggleQuiz('ultimatumQuiz')">Quiz</button>
       <div id="ultimatumQuiz" class="quiz-container hidden">
         <p>What is the average offer typically seen in Ultimatum Game experiments?</p>
-        <button onclick="checkAnswer('ultimatumQuiz', 'a', '30%', 'Incorrect! A bit higher than 30%.')">30%</button>
-        <button onclick="checkAnswer('ultimatumQuiz', 'b', '40%', 'Correct! Most experiments find offers around 40%.')">40%</button>
-        <button onclick="checkAnswer('ultimatumQuiz', 'c', '50%', 'Not quite. 50% is generous, but the average is slightly lower.')">50%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '30%', 'That’s a bit low; actual average is slightly higher.', false)">30%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '40%', 'Correct! Most experiments show ~40%.', true)">40%</button>
+        <button onclick="checkAnswer('ultimatumQuiz', '50%', 'That’s fairly generous; the average is around 40%.', false)">50%</button>
         <div class="feedback"></div>
       </div>
     </section>
@@ -59,9 +59,9 @@
       <button onclick="toggleQuiz('trustQuiz')">Quiz</button>
       <div id="trustQuiz" class="quiz-container hidden">
         <p>How is the money sent by the Sender modified before reaching the Receiver?</p>
-        <button onclick="checkAnswer('trustQuiz', 'a', 'Doubled', 'Incorrect! It is actually tripled.')">Doubled</button>
-        <button onclick="checkAnswer('trustQuiz', 'b', 'Tripled', 'Correct! The amount is tripled before the Receiver decides how much to return.')">Tripled</button>
-        <button onclick="checkAnswer('trustQuiz', 'c', 'No change', 'Incorrect! There is a change: it is multiplied by 3.')">No change</button>
+        <button onclick="checkAnswer('trustQuiz', 'Doubled', 'Nope, it’s not just doubled.', false)">Doubled</button>
+        <button onclick="checkAnswer('trustQuiz', 'Tripled', 'Correct! It becomes 3X.', true)">Tripled</button>
+        <button onclick="checkAnswer('trustQuiz', 'No change', 'Incorrect; there is a big multiplier.', false)">No change</button>
         <div class="feedback"></div>
       </div>
     </section>
@@ -76,10 +76,10 @@
       <!-- Short quiz for Public Goods -->
       <button onclick="toggleQuiz('publicGoodsQuiz')">Quiz</button>
       <div id="publicGoodsQuiz" class="quiz-container hidden">
-        <p>Which factor often plays a big role in public goods contributions?</p>
-        <button onclick="checkAnswer('publicGoodsQuiz', 'a', 'Punishment', 'Not the biggest factor in this scenario—framing can matter even more.')">Punishment</button>
-        <button onclick="checkAnswer('publicGoodsQuiz', 'b', 'Framing', 'Correct! The label “community” vs. “market” can trigger different norms.')">Framing</button>
-        <button onclick="checkAnswer('publicGoodsQuiz', 'c', 'Market size', 'Not the primary factor here.')">Market size</button>
+        <p>Which factor often has a major impact on public goods contributions?</p>
+        <button onclick="checkAnswer('publicGoodsQuiz', 'Punishment', 'Punishment can help, but not the biggest factor here.', false)">Punishment</button>
+        <button onclick="checkAnswer('publicGoodsQuiz', 'Framing', 'Correct! “Community” vs “Stock Market” triggers different norms.', true)">Framing</button>
+        <button onclick="checkAnswer('publicGoodsQuiz', 'Market size', 'Not the main factor we focus on here.', false)">Market size</button>
         <div class="feedback"></div>
       </div>
     </section>
@@ -99,10 +99,10 @@
       <!-- Short quiz for Speculative Bubbles -->
       <button onclick="toggleQuiz('speculativeQuiz')">Quiz</button>
       <div id="speculativeQuiz" class="quiz-container hidden">
-        <p>Which historical episode is famously cited as a classic speculative bubble?</p>
-        <button onclick="checkAnswer('speculativeQuiz', 'a', 'Tulip mania', 'Correct! The 17th-century Tulip mania in the Netherlands is a classic example.')">Tulip mania</button>
-        <button onclick="checkAnswer('speculativeQuiz', 'b', 'Industrial revolution', 'Incorrect! That was an economic transformation, not a bubble per se.')">Industrial revolution</button>
-        <button onclick="checkAnswer('speculativeQuiz', 'c', 'Spice trade', 'Incorrect! While important, it’s not the usual example of a bubble.')">Spice trade</button>
+        <p>Which historical episode is often cited as a classic speculative bubble?</p>
+        <button onclick="checkAnswer('speculativeQuiz', 'Tulip mania', 'Correct! 17th-century Netherlands.', true)">Tulip mania</button>
+        <button onclick="checkAnswer('speculativeQuiz', 'Industrial revolution', 'That’s an economic shift, not a bubble.', false)">Industrial revolution</button>
+        <button onclick="checkAnswer('speculativeQuiz', 'Spice trade', 'Important historically, but not the usual bubble example.', false)">Spice trade</button>
         <div class="feedback"></div>
       </div>
     </section>
@@ -118,9 +118,9 @@
       <button onclick="toggleQuiz('rpsQuiz')">Quiz</button>
       <div id="rpsQuiz" class="quiz-container hidden">
         <p>Which concept involves iterative thinking about others’ possible strategies?</p>
-        <button onclick="checkAnswer('rpsQuiz', 'a', 'Level-K reasoning', 'Correct! Level-K reasoning is about thinking about others’ levels of thought.')">Level-K reasoning</button>
-        <button onclick="checkAnswer('rpsQuiz', 'b', 'Bayesian updating', 'Incorrect! That’s about updating beliefs based on new information.')">Bayesian updating</button>
-        <button onclick="checkAnswer('rpsQuiz', 'c', 'Backward induction', 'Incorrect! That’s a method for finite sequential games, not specifically iterative thinking levels.')">Backward induction</button>
+        <button onclick="checkAnswer('rpsQuiz', 'Level-K reasoning', 'Correct!', true)">Level-K reasoning</button>
+        <button onclick="checkAnswer('rpsQuiz', 'Bayesian updating', 'That’s about updating beliefs with data.', false)">Bayesian updating</button>
+        <button onclick="checkAnswer('rpsQuiz', 'Backward induction', 'That’s for finite sequential games, not quite the same.', false)">Backward induction</button>
         <div class="feedback"></div>
       </div>
     </section>
@@ -141,7 +141,7 @@
       <p>
         Check our 
         <a href="https://github.com/YOUR_USERNAME/GameOn-BehavioralEcon/discussions" target="_blank">Discussion Forums</a>
-        to share your Reflection Reports and discuss creative twists.
+        to share your Reflection Reports, discuss “news” twists, or ask questions.
       </p>
     </section>
   </main>
@@ -149,6 +149,8 @@
   <footer>
     <p>© 2024 GameOn: Behavioral Econ Explorations</p>
   </footer>
+
+  <!-- IMPORTANT: Load script after HTML so onclick calls work. -->
   <script src="script.js"></script>
 </body>
 </html>
