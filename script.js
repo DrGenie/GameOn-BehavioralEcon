@@ -1,8 +1,19 @@
-/************************************************************************
- * 1. DIAGRAMS (SVG Generation)
- ************************************************************************/
+/*****************************************************************************
+ * 1) MAKE FUNCTIONS GLOBAL so "onclick" works in HTML
+ ****************************************************************************/
+window.showUltimatumDiagram = showUltimatumDiagram;
+window.showTrustDiagram = showTrustDiagram;
+window.showPublicGoodsDiagram = showPublicGoodsDiagram;
+window.showSpeculativeDiagram = showSpeculativeDiagram;
+window.showRPSDiagram = showRPSDiagram;
+window.toggleQuiz = toggleQuiz;
+window.checkAnswer = checkAnswer;
+window.startCountdown = startCountdown;
+window.pauseCountdown = pauseCountdown;
 
-// 1. Ultimatum Game Diagram
+/*****************************************************************************
+ * 2) DIAGRAM GENERATION FUNCTIONS
+ ****************************************************************************/
 function showUltimatumDiagram() {
   const container = document.getElementById('ultimatumDiagram');
   container.innerHTML = `
@@ -27,13 +38,12 @@ function showUltimatumDiagram() {
       <text x="360" y="63" fill="#000">Accept</text>
 
       <!-- Payoff text -->
-      <text x="410" y="10" fill="red" font-size="12">Payoff = 0, 0</text>
-      <text x="410" y="70" fill="blue" font-size="12">Payoff = X, (10 - X)</text>
+      <text x="410" y="10" fill="red" font-size="12">Payoffs = 0, 0</text>
+      <text x="410" y="70" fill="blue" font-size="12">Payoffs = X, (10 - X)</text>
     </svg>
   `;
 }
 
-// 2. Trust Game Diagram
 function showTrustDiagram() {
   const container = document.getElementById('trustDiagram');
   container.innerHTML = `
@@ -65,7 +75,6 @@ function showTrustDiagram() {
   `;
 }
 
-// 3. Public Goods Diagram
 function showPublicGoodsDiagram() {
   const container = document.getElementById('publicGoodsDiagram');
   container.innerHTML = `
@@ -103,7 +112,6 @@ function showPublicGoodsDiagram() {
   `;
 }
 
-// 4. Speculative Bubbles Diagram
 function showSpeculativeDiagram() {
   const container = document.getElementById('speculativeDiagram');
   container.innerHTML = `
@@ -129,7 +137,6 @@ function showSpeculativeDiagram() {
   `;
 }
 
-// 5. Rock-Paper-Scissors Diagram
 function showRPSDiagram() {
   const container = document.getElementById('rpsDiagram');
   container.innerHTML = `
@@ -154,43 +161,39 @@ function showRPSDiagram() {
       <text x="250" y="170" fill="#000">Cuts</text>
 
       <line x1="400" y1="180" x2="250" y2="60" stroke="black" stroke-width="2"></line>
-      <text x="330" y="110" fill="#000" font-size="12" transform="rotate(45,330,110)">Crushes</text>
+      <text x="320" y="110" fill="#000" font-size="12" transform="rotate(45,320,110)">Crushes</text>
     </svg>
   `;
 }
 
-
-/************************************************************************
- * 2. QUIZ LOGIC
- ************************************************************************/
-
+/*****************************************************************************
+ * 3) QUIZ LOGIC
+ ****************************************************************************/
 function toggleQuiz(quizId) {
   const quiz = document.getElementById(quizId);
   quiz.classList.toggle('hidden');
   // Clear any existing feedback
   const feedback = quiz.querySelector('.feedback');
-  if(feedback) feedback.textContent = '';
+  if (feedback) feedback.textContent = '';
 }
 
-function checkAnswer(quizId, option, correctOption, message) {
+/**
+ * checkAnswer(quizId, userChoice, message, isCorrect)
+ *  - quizId: the container ID for the quiz
+ *  - userChoice: label or text (not critical, just for reference)
+ *  - message: the feedback to display
+ *  - isCorrect: boolean (true or false)
+ */
+function checkAnswer(quizId, userChoice, message, isCorrect) {
   const quiz = document.getElementById(quizId);
   const feedback = quiz.querySelector('.feedback');
-  if (option === 'a' || option === 'b' || option === 'c') {
-    // If the user picked the correct answer
-    if (document.querySelector(`[onclick*="${quizId}"][onclick*="'${option}'"]`).textContent.includes(correctOption)) {
-      feedback.style.color = '#27ae60'; // green
-    } else {
-      feedback.style.color = '#e74c3c'; // red
-    }
-    feedback.textContent = message;
-  }
+  feedback.textContent = message;
+  feedback.style.color = isCorrect ? '#27ae60' : '#e74c3c';
 }
 
-
-/************************************************************************
- * 3. COUNTDOWN TIMER LOGIC (for Trust Game & Speculative Bubbles)
- ************************************************************************/
-
+/*****************************************************************************
+ * 4) COUNTDOWN TIMER
+ ****************************************************************************/
 let countdownInterval;
 let currentTime;
 
@@ -199,7 +202,9 @@ function startCountdown(timerId, seconds) {
   const timerDisplay = document.getElementById(timerId);
   timerDisplay.textContent = currentTime;
 
+  // Clear any previous interval
   clearInterval(countdownInterval);
+
   countdownInterval = setInterval(() => {
     currentTime--;
     timerDisplay.textContent = currentTime;
@@ -213,21 +218,3 @@ function startCountdown(timerId, seconds) {
 function pauseCountdown() {
   clearInterval(countdownInterval);
 }
-
-
-/************************************************************************
- * 4. IDEAS FOR REAL-TIME DATA COLLECTION & REFLECTION
- ************************************************************************/
-/*
- - Use a Google Form or Kahoot to gather each round’s offers or moves. 
- - Display aggregated results with a quick chart or reading them back in class.
- - Direct students to GitHub Discussions to post reactions:
-     "What cultural norms shaped your Ultimatum Game decisions?"
-     "Did you trust more or less after seeing returns in previous rounds?"
- - Insert 'creative twist' for Speculative Bubbles, e.g.:
-     "Breaking News: The watch brand you’re trading is under investigation!"
-     See if prices instantly drop.
- - Encourage Reflection Reports: 
-     "Which biases (anchoring, fairness, reciprocity, herd behavior) influenced your decisions?"
-     "Are you more rational after witnessing the bubble burst?"
-*/
